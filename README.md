@@ -104,16 +104,16 @@ The approximate time to complete the full training was calculated based on initi
 >
 > *150 hours / 24 = **6.25 days***
 
-#### **B. The 20-Epoch Comparative Test**
+#### **B. The 10-Epoch Comparative Test**
 
 Given that a full 600-epoch run was not feasible, a **20-epoch** training session was executed. This test ran for approximately 5 hours on a rented L4 GPU, using the original batch size of 128, which required **~21 GB of GPU Memory**.
 ```bash
 python main.py --train --model yolo11.yaml --data coco.yaml --epochs 20 --batch 128 --name yolo11n_selftrained_20epochs
 ```
 
-#### **C. Comparative Results Analysis (at 20 Epochs)**
+#### **C. Comparative Results Analysis (at 10 Epochs)**
 
-By using the official training graph, we can perform a direct "apples-to-apples" comparison of our model against the official one at the same 20-epoch milestone.
+By using the official training graph, we can perform a direct "apples-to-apples" comparison of our model against the official one at the same 10-epoch milestone.
 
 <p align="center">
   <img src="https://github.com/anshulsc/Reproduce-Yolo11/blob/main/assets/3.png" width="600"/>
@@ -123,20 +123,22 @@ By using the official training graph, we can perform a direct "apples-to-apples"
 <p align="center">
   <img src="https://github.com/anshulsc/Reproduce-Yolo11/blob/main/assets/4.png" width="600"/>
 </p>
-<p align="center"><b>Figure 5:</b> By inspecting the graph at X=20, we can find the benchmark mAP<sup>50-95</sup> is 26.5%.</p>
+<p align="center"><b>Figure 5:</b> By inspecting the graph at X=10, we can find the benchmark mAP<sup>50-95</sup> is 22.5%.</p>
 
-The performance of the self-trained model at epoch 20 is highly comparable to the official model's early-stage performance, successfully validating the reproduction process within practical constraints.
+The performance of the self-trained model at epoch 10 is highly comparable to the official model's early-stage performance, successfully validating the reproduction process within practical constraints.
+
+Weights and results.csv is provided for cross-verification.
 
 ---
 
 ## **4. Results Summary for Yolo11n**
 
-| Metric                  | Official Model (600 epochs) | My Validation (Pre-Trained) | Official Model (at Epoch 20) | My Training (at Epoch 20) |
+| Metric                  | Official Model (600 epochs) | My Validation (Pre-Trained) | Official Model (at Epoch 10) | My Training (at Epoch 10) |
 | :---------------------- | :---------------------------: | :---------------------------: | :----------------------------: | :-------------------------: |
-| **mAP<sup>50-95</sup>** |           **39.5%**           |           **39.3%**           |           **26.5%**            | **[Your 20-epoch mAP]%** |
-| **mAP<sup>50</sup>**    |           **55.1%**           |           **54.9%**           |           **39.0%**            |   **[Your mAP50]%**    |
-| **Precision**           |           **65.6%**           |           **65.3%**           |           **51.9%**            | **[Your Precision]%** |
-| **Recall**              |           **50.2%**           |           **50.4%**           |           **37.0%**            |  **[Your Recall]%**   |
+| **mAP<sup>50-95</sup>** |           **39.5%**           |           **39.3%**           |           **22.5%**            | **22.4%** |
+| **mAP<sup>50</sup>**    |           **55.1%**           |           **54.9%**           |           **34.0%**            |   **33.8%**    |
+| **Precision**           |           **65.6%**           |           **65.3%**           |           **48.8%**            | **48.0%** |
+| **Recall**              |           **50.2%**           |           **50.4%**           |           **32.6%**            |  **33.4%**   |
 
 ---
 
@@ -176,7 +178,7 @@ My primary workstation is an **Apple MacBook with 8GB of RAM**, which is not wel
 As a result, I had to **rent a GPU-enabled cloud instance (NVIDIA L4)** to run the training sessions that required CUDA support and higher memory availability.
 
 #### **B. Training Configuration Constraints**
-The official YOLOv11n configuration uses a batch size of 128 and trains for 600 epochs, resulting in **over 6 days of continuous compute time**, which was not feasible. Given these limitations, I opted to conduct a comparative analysis using **20 epochs** instead of the full 600. This allowed for a direct, fair comparison against the official metrics at the same milestone, providing valuable insights into the model’s reproducibility.
+The official YOLOv11n configuration uses a batch size of 128 and trains for 600 epochs, resulting in **over 6 days of continuous compute time**, which was not feasible. Given these limitations, I opted to conduct a comparative analysis using **10 epochs** instead of the full 600. This allowed for a direct, fair comparison against the official metrics at the same milestone, providing valuable insights into the model’s reproducibility.
 
 ---
 
