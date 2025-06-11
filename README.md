@@ -87,10 +87,14 @@ python main.py --val --model yolo11n.pt --data coco.yaml --imgsz 640
 
 The official training configuration requires a significant computational budget due to its extensive arguments.
 
+
+
 <p align="center">
   <img src="https://github.com/anshulsc/Reproduce-Yolo11/blob/main/assets/2.png" width="600"/>
 </p>
 <p align="center"><b>Figure 2:</b> The official training configuration for YOLOv11n, showing 600 epochs and a batch size of 128.</p>
+
+In Image you can see the original hyperparametrs used to train YoloV11n, the major botlleneck is the original batch size 128 (requires 21GB GPUcompute) and 600 epochs. 
 
 The approximate time to complete the full training was calculated based on initial runs:
 <p align="center">
