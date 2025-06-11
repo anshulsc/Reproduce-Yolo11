@@ -81,21 +81,23 @@ python main.py --val --model yolo11n.pt --data coco.yaml --imgsz 640 --name pret
 </p>
 <p align="center"><b>Figure 1:</b> Terminal output from validating the pre-trained yolo11n.pt model, showing a final mAP<sup>50-95</sup> of 39.3%.</p>
 
-### **3.2. Phase 2: Full Training Reproduction Analysis**
+### **3.2. Phase 2: Full Training Reproduction**
 
 #### **A. The Challenge of Full Reproduction**
 
-The official training configuration requires significant compute:
+The official training configuration requires significant compute because of the original arguments:
 
 <p align="center">
   <img src="https://github.com/anshulsc/Reproduce-Yolo11/blob/main/assets/2.png" width="600"/>
 </p>
 <p align="center"><b>Figure 2:</b> The official training configuration for YOLOv11n, showing 600 epochs and a batch size of 128.</p>
 
-Approximate compute time:
+Approximate compute time, I encountered during training:
 
-> 15 minutes/epoch × 600 epochs = 9,000 minutes
+> 15 minutes/epoch × 600 epochs = 9,000 minutes 
+
 > 9,000 minutes / 60 = 150 hours
+
 > 150 hours / 24 = **6.25 days**
 
 <p align="center">
@@ -105,7 +107,7 @@ Approximate compute time:
 
 #### **B. 20-Epochs Comparative Test**
 
-Instead of a full 600-epoch run, a **20-epoch** training session was executed:
+Instead of a full 600-epoch run which would have taken 6 days, a **20-epoch** training session was executed for 5 hours on L4 GPU with original configuration and batch size of 128, which requred 21 GB of GPU Memory:
 
 ```bash
 python main.py --train --model yolo11.yaml --data coco.yaml --epochs 20 --batch 128 --name yolo11n_selftrained_20epochs
@@ -134,10 +136,12 @@ Comparison:
 
 ## **4.Results Summary for Yolo11n**
 
-| Metric                  | Official Paper (Final) | My Validation (Pre-trained) |   Official Model (at Epoch 20)  | My Training (at Epoch 20) |
-| :---------------------- | :--------------------: | :-------------------------: | :-----------------------------: | :-----------------------: |
-| **mAP<sup>50-95</sup>** |        **39.5%**       |          **39.3%**          | **26.5%** | **\[Your 20-epoch mAP]%** |
-| **Epochs Run**          |           600          |             600             |                20               |             20            |
+| Metric                  | Official Model ( 600 epochs) | My Validation (Pre-Trained) (600 epochs) | Official Model (at Epoch 20) | My Training (at Epoch 20) |
+| :---------------------- | :------------------------------------: | :-------------------------------------: | :----------------------------: | :-------------------------: |
+| **mAP<sup>50-95</sup>** |               **39.5%**                |                **39.3%**                |           **26.5%**            | **[Your 20-epoch mAP]%** |
+| **mAP<sup>50</sup>**    |                 **55.1%**                 |                  **54.9%**                  |             **39.0%**             |   **[Your mAP50]%**    |
+| **Precision**           |                 **65.6%**                 |                  **65.3%**                  |           **51.9%**            | **[Your Precision]%** |
+| **Recall**              |                 **50.2%**                 |                  **50.4%**                  |           **37.0%**            |  **[Your Recall]%**   |
 
 ---
 
