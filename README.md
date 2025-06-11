@@ -121,7 +121,7 @@ By using the official training graph, we can perform a direct "apples-to-apples"
 <p align="center"><b>Figure 4:</b> The official training graph for YOLOv11n over 600 epochs.</p>
 
 <p align="center">
-  <img src="https://github.com/anshulsc/Reproduce-Yolo11/blob/main/assets/4.png" width="600"/>
+  <img src="https://github.com/anshulsc/Reproduce-Yolo11/blob/main/assets/6.png" width="600"/>
 </p>
 <p align="center"><b>Figure 5:</b> By inspecting the graph at X=10, we can find the benchmark mAP<sup>50-95</sup> is 22.5%.</p>
 
