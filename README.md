@@ -88,7 +88,7 @@ python main.py --val --model yolo11n.pt --data coco.yaml --imgsz 640 --name pret
 The official training configuration requires significant compute:
 
 <p align="center">
-  <img src="[link_to_your_official_config_image.png]" width="600"/>
+  <img src="https://github.com/anshulsc/Reproduce-Yolo11/blob/main/assets/2.png" width="600"/>
 </p>
 <p align="center"><b>Figure 2:</b> The official training configuration for YOLOv11n, showing 600 epochs and a batch size of 128.</p>
 
@@ -111,7 +111,7 @@ python main.py --train --model yolo11.yaml --data coco.yaml --epochs 20 --batch 
 Using the official training graph:
 
 <p align="center">
-  <img src="[link_to_your_official_600_epoch_graph.png]" width="600"/>
+  <img src="https://github.com/anshulsc/Reproduce-Yolo11/blob/main/assets/3.png" width="600"/>
 </p>
 <p align="center"><b>Figure 3:</b> The official training graph for YOLOv11n over 600 epochs. By inspecting the graph at X=20, we can find the benchmark mAP<sup>50-95</sup>.</p>
 
@@ -121,7 +121,7 @@ Comparison:
 * **Self-Trained Model at 20 Epochs:** \[Your 20-epoch mAP]%
 
 <p align="center">
-  <img src="[link_to_your_20_epoch_training_graph.png]" width="600"/>
+  <img src="https://github.com/anshulsc/Reproduce-Yolo11/blob/main/assets/4.png" width="600"/>
 </p>
 <p align="center"><b>Figure 4:</b> My self-trained model's metrics. The performance at epoch 20 is highly comparable to the official model's early-stage performance, validating the reproduction process.</p>
 
