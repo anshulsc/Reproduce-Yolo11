@@ -71,7 +71,7 @@ The reproduction process was performed in two phases:
 First, validate the official pre-trained `yolo11n.pt` model:
 
 ```bash
-python main.py --val --model yolo11n.pt --data coco.yaml --imgsz 640 --name pretrained_yolo11n_val
+python main.py --val --model yolo11n.pt --data coco.yaml --imgsz 640  
 ```
 
 * **Results:** The validation run yielded a **mAP<sup>50-95</sup> of 39.3%**, very close to the official paper's 39.5%.
@@ -120,7 +120,7 @@ Using the official training graph:
 <p align="center">
   <img src="https://github.com/anshulsc/Reproduce-Yolo11/blob/main/assets/3.png" width="600"/>
 </p>
-<p align="center"><b>Figure 3:</b> The official training graph for YOLOv11n over 600 epochs. By inspecting the graph at X=20, we can find the benchmark mAP<sup>50-95</sup>.</p>
+<p align="center"><b>Figure 3:</b> The official training graph for YOLOv11n over 600 epochs.<sup>50-95</sup>.</p>
 
 Comparison:
 
@@ -130,7 +130,9 @@ Comparison:
 <p align="center">
   <img src="https://github.com/anshulsc/Reproduce-Yolo11/blob/main/assets/4.png" width="600"/>
 </p>
-<p align="center"><b>Figure 4:</b> My self-trained model's metrics. The performance at epoch 20 is highly comparable to the official model's early-stage performance, validating the reproduction process.</p>
+<p align="center"><b>Figure 4:</b>  By inspecting the graph at X=20, we can find the benchmark mAP.</p>
+
+The performance at epoch 20 is highly comparable to the official model's early-stage performance, validating the reproduction process.
 
 ---
 
