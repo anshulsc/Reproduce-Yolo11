@@ -9,7 +9,7 @@ The project's focus is specifically on the **YOLOv11n (tiny)** model. All evalua
 
 ## **2. Environment Setup and Prerequisites**
 
-A robust and isolated environment is the foundation for reproducible ML experimentation. This project uses `uv` for its speed and reliability in managing Python environments and dependencies.
+This project uses `uv`, packet manager for its speed and reliability in managing Python environments and dependencies.
 
 ### **Prerequisites**
 
@@ -22,8 +22,8 @@ A robust and isolated environment is the foundation for reproducible ML experime
 Begin by cloning the project repository to your local machine:
 
 ```bash
-git clone [URL_to_your_git_repository]
-cd [repository_folder_name]
+git clone https://github.com/anshulsc/Reproduce-Yolo11.git
+cd Reproduce-Yolo11
 ```
 
 ### **Step 2: Install `uv`**
@@ -98,7 +98,12 @@ Approximate compute time:
 > 9,000 minutes / 60 = 150 hours
 > 150 hours / 24 = **6.25 days**
 
-#### **B. A Pragmatic Approach: The 20-Epoch Comparative Test**
+<p align="center">
+  <img src="https://github.com/anshulsc/Reproduce-Yolo11/blob/main/assets/5.png" width="600"/>
+</p>
+<p align="center"><b>Figure 3:</b>Time Taken to run each epoch for training.</p>
+
+#### **B. 20-Epochs Comparative Test**
 
 Instead of a full 600-epoch run, a **20-epoch** training session was executed:
 
@@ -117,7 +122,7 @@ Using the official training graph:
 
 Comparison:
 
-* **Official Model at 20 Epochs:** \~\[Official 20-epoch mAP]%
+* **Official Model at 20 Epochs:** 26.5%
 * **Self-Trained Model at 20 Epochs:** \[Your 20-epoch mAP]%
 
 <p align="center">
@@ -127,12 +132,12 @@ Comparison:
 
 ---
 
-## **4. Consolidated Results Summary**
+## **4.Results Summary for Yolo11n**
 
 | Metric                  | Official Paper (Final) | My Validation (Pre-trained) |   Official Model (at Epoch 20)  | My Training (at Epoch 20) |
 | :---------------------- | :--------------------: | :-------------------------: | :-----------------------------: | :-----------------------: |
-| **mAP<sup>50-95</sup>** |        **39.5%**       |          **39.3%**          | **\~\[Official 20-epoch mAP]%** | **\[Your 20-epoch mAP]%** |
-| **Epochs Run**          |           600          |             N/A             |                20               |             20            |
+| **mAP<sup>50-95</sup>** |        **39.5%**       |          **39.3%**          | **26.5%** | **\[Your 20-epoch mAP]%** |
+| **Epochs Run**          |           600          |             600             |                20               |             20            |
 
 ---
 
@@ -141,8 +146,8 @@ Comparison:
 1. **Clone the repo:**
 
    ```bash
-   git clone [URL]
-   cd [folder]
+   git clone https://github.com/anshulsc/Reproduce-Yolo11.git
+   cd Reproduce-Yolo11
    ```
 2. **Set up environment:**
 
@@ -164,12 +169,33 @@ Comparison:
    ```
 
 ---
+ ## 6. Challenges and Limitations
+
+Throughout the reproduction process, several significant challenges were encountered that impacted the ability to replicate the official YOLOv11n training run exactly:
+
+#### A. Hardware Limitations
+
+I  work on an Apple MacBook with 8GB RAM, which is not well-suited for large-scale deep learning experiments:
+
+- Lack of CUDA Support: The MacBook lacks an NVIDIA GPU, preventing the use of CUDA acceleration that’s essential for fast YOLOv11n training.
+
+- Limited Memory: The 8GB RAM significantly restricts training with original batch size and arguments.
+
+As a result, I had to rent a GPU-enabled cloud instance to run the training sessions that required CUDA support and higher memory availability.
+
+#### B. Training Configuration Constraints
+
+The official YOLOv11n configuration uses a batch size of 128 and trains for 600 epochs, resulting in:
+
+- 6+ days of continuous compute time even on high-end hardware.
+
+
+
+Given these limitations:
+
+I opted to conduct a comparative analysis using 20 epochs instead of the full 600. I compared my results at epoch 20 to the official metrics available at that point, ensuring an apples-to-apples comparison that still provided valuable insights into the model’s reproducibility.
 
 ## **6. References**
 
 * [Official Training Configuration & Metrics](https://hub.ultralytics.com/models/7wzkDSKNMcwkPTs8ZVJC?tab=train)
 * [Ultralytics Validation Mode Documentation](https://docs.ultralytics.com/modes/val/)
-
----
-
-If you’d like, I can help you insert the correct URLs for your official training graph, config images, and your own training results graph. Let me know!
