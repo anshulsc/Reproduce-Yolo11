@@ -71,7 +71,7 @@ First, it was essential to validate the official pre-trained `yolo11n.pt` model.
     ```
     *   **Results:** The validation run yielded a **mAP<sup>50-95</sup> of 39.3%**. This result successfully verifies the local setup, being extremely close to the official paper's claim of 39.5%.
 
-![My Validation Output]([assets/1.png])
+![My Validation Output]([https://github.com/anshulsc/Reproduce-Yolo11/blob/main/assets/1.png])
 *<p align="center"><b>Figure 1:</b> Terminal output from validating the pre-trained yolo11n.pt model, showing a final mAP<sup>50-95</sup> of 0.393.</p>*
 
 ### **3.2. Phase 2: Full Training Reproduction Analysis**
